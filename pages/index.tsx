@@ -45,49 +45,49 @@ const Home: NextPage = () => {
     useEffect(() => {
         const dataPlayers = localStorage.getItem("data-players");
         if (!dataPlayers) {
-            localStorage.setItem(
-                "data-players",
-                JSON.stringify([
-                    {
-                        id: 1,
-                        name: "Hồ Công Thành",
-                        address: "0x3a9b17d2957",
-                        health: 85,
-                        strength: 62,
-                    },
-                    {
-                        id: 2,
-                        name: "Nguyễn Hoàng Bảo",
-                        address: "0xcd4a533831c",
-                        health: 92,
-                        strength: 77,
-                    },
-                    {
-                        id: 3,
-                        name: "Trình Xuân Lộc",
-                        address: "0xe7038f51a90",
-                        health: 65,
-                        strength: 55,
-                    },
-                    {
-                        id: 4,
-                        name: "Nguyễn Văn Duy",
-                        address: "0xaf7b8b9a6c1",
-                        health: 78,
-                        strength: 68,
-                    },
-                    {
-                        id: 5,
-                        name: "Trịnh Thế Nhật",
-                        address: "0x1d44cfe5579",
-                        health: 90,
-                        strength: 83,
-                    },
-                ])
-            );
+            const defaultPlayers: Player[] = [
+                {
+                    id: '1',
+                    name: "Hồ Công Thành",
+                    address: "0x3a9b17d2957",
+                    health: 85,
+                    strength: 62,
+                },
+                {
+                    id: '2',
+                    name: "Nguyễn Hoàng Bảo",
+                    address: "0xcd4a533831c",
+                    health: 92,
+                    strength: 77,
+                },
+                {
+                    id: '3',
+                    name: "Trình Xuân Lộc",
+                    address: "0xe7038f51a90",
+                    health: 65,
+                    strength: 55,
+                },
+                {
+                    id: '4',
+                    name: "Nguyễn Văn Duy",
+                    address: "0xaf7b8b9a6c1",
+                    health: 78,
+                    strength: 68,
+                },
+                {
+                    id: '5',
+                    name: "Trịnh Thế Nhật",
+                    address: "0x1d44cfe5579",
+                    health: 90,
+                    strength: 83,
+                },
+            ];
+            localStorage.setItem("data-players", JSON.stringify(defaultPlayers));
+            setPlayers(defaultPlayers);  
         } else {
             setPlayers(JSON.parse(dataPlayers) || []);
         }
+
         if (typeof window !== undefined) {
             const ethereumProviderInjected =
                 typeof window.ethereum !== "undefined";
